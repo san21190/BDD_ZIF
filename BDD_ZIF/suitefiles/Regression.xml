@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Automation Test Report"> <!-- data-provider-thread-count="5" -->
+
+
+  <!-- Suite file contains TestRunner location and Testng listener location -->
+
+<!-- Test Started... -->
+
+
+<!--   		<parameter name="browserType" value="Chrome" /> -->
+<!-- 		<parameter name="appURL" value="http://10.1.0.7:90" /> -->
+
+
+
+ <!-- <test name="CMP Automation Test Report">
+		<parameter name="DatasheetName" value="CMPPortal" />
+    <classes>
+        <class name="com.zifautomation.TestScripts.CMPRegression"/>
+    </classes>
+  </test>
+
+
+   <test name="ZIF Catalog Automation Test Report">
+		<parameter name="DatasheetName" value="ZIFCatalog" />
+    <classes>
+       <class name="com.zifautomation.TestScripts.ZIFCatalogRegression"/>
+    </classes>
+  </test>
+ -->
+
+<test name="ZIF UI AnP Automation Test Report">
+		<parameter name="DatasheetName" value="ZIFAIPortal"/>
+    <classes>
+		 <class name="com.zifautomation.TestCases.ZIF_Monitoring_UI_US7422_Regression"/>
+	</classes>
+  </test>
+
+
+
+ <!--  <test name="ZIF UI Core Automation Test Report" >
+		<parameter name="DatasheetName" value="ZIFAIPortal" />
+    <classes>
+		  <class name="com.zifautomation.TestScripts.ZIFUI_Core_Regression"/>
+		    </classes>
+  </test>
+ -->
+
+  <!-- <test name="HtmlUnit Test Report" verbose="2">
+    <classes>
+		 <class name="com.zifautomation.TestScripts.TestVPN"/>
+    </classes>
+  </test> -->
+</suite> <!-- Suite -->

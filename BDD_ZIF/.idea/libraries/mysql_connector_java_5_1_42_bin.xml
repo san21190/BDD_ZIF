@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="mysql-connector-java-5.1.42-bin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/resources/Datatables/Downloads/postgresql-42.2.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/test/java/com/zifautomation/Utility/mysql-connector-java-5.1.42-bin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,583 @@
+package com.zifautomation.TestCases;
+
+import com.aventstack.extentreports.Status;
+import com.zifautomation.Base.Base;
+import com.zifautomation.Pages.Loginfunction;
+import com.zifautomation.Pages.ZIFAIDashboardPage;
+import com.zifautomation.Pages.ZIFAI_AlertsSettingsPage;
+import com.zifautomation.Pages.ZIFAI_CaseManagementPage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+
+public class ZIFUI_Discovery_US3799_Regression extends Base {
+
+
+
+	@Test
+	public void ZIFUI_Discovery_US3799_Regression() throws IOException, InterruptedException {
+
+		//Report Initialization
+		test = extent.createTest("User Story 3799: Device Summary - Left and Right Navigation");
+		test.createNode("User Story 3799: Device Summary - Left and Right Navigation");
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+
+		// Login to the ZIFAI Portal With valid credentials
+		try {
+			String UserName = testdata.getTestDataInMap().get("UserName");
+			String Password = testdata.getTestDataInMap().get("Password");
+			new Loginfunction(driver).Enterthecredentials(UserName, Password);
+			test.log(Status.PASS, "Valid credential has been entered");
+			Thread.sleep(2000);
+		} catch (AssertionError | Exception e) {
+			test.log(Status.FAIL, "Login failed");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+
+		}
+
+		//click on the Raw data link
+		try {
+			new ZIFAIDashboardPage(driver).hoveronAnalyzes();
+			new ZIFAIDashboardPage(driver).clickRawData();
+			test.log(Status.PASS, "Raw data link is clicked");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		} catch (AssertionError | Exception e) {
+			test.log(Status.FAIL, "Not able to click the Raw data link");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+
+
+		//Clicking on the setting icon and filtering discovery id and clicking on it//
+		try {
+			new ZIFAI_AlertsSettingsPage(driver).alertSettingsIcon.click();
+			Thread.sleep(3000);
+			new ZIFAI_AlertsSettingsPage(driver).Discoverysearch.sendKeys("Automode");
+			Thread.sleep(3000);
+			boolean Discoverystatus = new ZIFAI_AlertsSettingsPage(driver).Discoveryzid.isDisplayed();
+			if (Discoverystatus) {
+				new ZIFAI_AlertsSettingsPage(driver).Discoveryzid.click();
+				Thread.sleep(3000);
+				test.log(Status.PASS, "Clicked on setting icon for loading discovery page");
+				test.addScreenCaptureFromPath(captureScreenShot(driver));
+			} else if (!Discoverystatus) {
+				test.log(Status.FAIL, "Unable to load discovery page by clicking on setting icon");
+				test.addScreenCaptureFromPath(captureScreenShot(driver));
+			}
+		} catch (AssertionError | Exception e) {
+			test.log(Status.FAIL, "Unable to load discovery page");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+		//---------------------------------------End of US---------------------------------------------------//
+		//Report Initialization
+		test = extent.createTest("Test Case 3738: Verify Device List in Collapsed discovery summary View");
+		test.createNode("Test Case 3738: Verify Device List in Collapsed discovery summary View");
+
+		//Clicking on Expand view//
+		try{
+			Thread.sleep(3000);
+			new ZIFAI_AlertsSettingsPage(driver).Expand.click();
+			Thread.sleep(3000);
+			String strvalue= 	new ZIFAI_AlertsSettingsPage(driver).Rightpanel.getAttribute("style");
+			System.out.println("Right panel width: " +strvalue);
+			if(strvalue.contains("100%")){
+				test.log(Status.PASS, "Right panel is expanded and list of discovery is hidden");
+			}
+			else if(!strvalue.contains("100%")) {
+				test.log(Status.FAIL, "Right panel is not expanded and list of discovery is not hidden");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to verify device list LHS after clicking on expand");
+		}
+
+		//Verifying whether collapsed button is displayed//
+		try{
+			Thread.sleep(3000);
+			Boolean strvalue= 	new ZIFAI_AlertsSettingsPage(driver).Collapse.isDisplayed();
+			if(strvalue==true){
+				test.log(Status.PASS, "Discovery details panel is expanded and the button has changed to collapse");
+			}
+			else if(strvalue==false) {
+				test.log(Status.FAIL, "Discovery details panel is expanded and the button has not changed to collapse");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to expand button changing to collapse button during expand mode");
+		}
+
+		//Click on collapse and verify the discovery title//
+		try{
+			Thread.sleep(3000);
+			new ZIFAI_AlertsSettingsPage(driver).Collapse.click();
+			Boolean listofdisc = new ZIFAI_AlertsSettingsPage(driver).listofdiscoverytitle.isDisplayed();
+			if(listofdisc==true){
+				test.log(Status.PASS, "Discovery details panel is collapse and list of discoveries is visible");
+			}
+			else if(listofdisc==false) {
+				test.log(Status.FAIL, "Discovery details panel is not collapsed and list of discoveries is not visible");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to verify device list LHS after clicking on LHS");
+		}
+
+		//Device list LHS should update the devices when  scroll down//
+		try {
+			Thread.sleep(3000);
+			List<WebElement> Device_stat = new ZIFAI_AlertsSettingsPage(driver).listofdiscoveryLHS;
+			List<WebElement> Device_status = new ZIFAI_AlertsSettingsPage(driver).listofdiscoveryLHS;
+			int i;
+			for ( i= 0; i<Device_stat.size(); i=i+1) {
+				String devicedetail = Device_status.get(i).getText();
+				System.out.println("Device list LHS:" + devicedetail);
+				if (!devicedetail.isEmpty()) {
+					System.out.println("Device list LHS verified and scrolled : " +devicedetail);
+				} }
+			test.log(Status.PASS, "Device list LHS verified and scrolled ");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		} catch (Error e) {
+			test.log(Status.FAIL, e);
+			test.log(Status.FAIL, "Unable to verify Device List in LHS");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		} catch (IndexOutOfBoundsException e) {
+			test.log(Status.PASS, "End of Verification for Device List in LHS");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+
+
+		//Device detail list RHS should update the devices when  scroll down//
+		try {
+			Thread.sleep(3000);
+			List<WebElement> casestatus = driver.findElements(By.xpath("//div[contains(@class,'dev-link')]"));
+			List<WebElement> case_status = driver.findElements(By.xpath("//div[contains(@class,'dev-link')]"));
+			int i;
+			for ( i= 0; i<casestatus.size(); i=i+1) {
+				System.out.println(casestatus.size());
+				Actions action = new Actions(driver);
+				Thread.sleep(2000);
+				action.moveToElement(case_status.get(i)).perform();
+				String Casestatustooltip = case_status.get(i).getText();
+				System.out.println("Device detail list: " + Casestatustooltip);
+				if (!Casestatustooltip.isEmpty()) {
+					System.out.println("Device list verified and scrolled in RHS : " +Casestatustooltip);
+
+				} }
+			test.log(Status.PASS, "Device list verified and scrolled in RHS ");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+			Thread.sleep(2000);
+		} catch (Error e) {
+			test.log(Status.FAIL, e);
+			test.log(Status.FAIL, "Unable to verify Device List in RHS");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		} catch (IndexOutOfBoundsException e) {
+			test.log(Status.PASS, "End of Verification for Device List in RHS");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+
+
+
+		//Device list LHS should update the devices when scroll down after clicking on collapse button//
+		try {
+			Thread.sleep(3000);
+			List<WebElement> Device_stat = new ZIFAI_AlertsSettingsPage(driver).listofdiscoveryLHS;
+			List<WebElement> Device_status = new ZIFAI_AlertsSettingsPage(driver).listofdiscoveryLHS;
+			int i;
+			for ( i= 0; i<Device_stat.size(); i=i+1) {
+				String devicedetail = Device_status.get(i).getText();
+				System.out.println("Device list LHS:" + devicedetail);
+				if (!devicedetail.isEmpty()) {
+					System.out.println("Device list LHS verified and scrolled after collapse mode : " +devicedetail);
+				} }
+			test.log(Status.PASS, "Device list LHS verified and scrolled after collapse mode ");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		} catch (Error e) {
+			test.log(Status.FAIL, e);
+			test.log(Status.FAIL, "Unable to verify Device List in LHS after collapse mode");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		} catch (IndexOutOfBoundsException e) {
+			test.log(Status.PASS, "End of Verification for Device List in LHS after collapse mode");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+
+		//Verify close icon is displayed after clicking on collapse icon//
+		try{
+			Thread.sleep(3000);
+			Boolean Backtodiscovery = new ZIFAI_AlertsSettingsPage(driver).Backtodiscoverylist.isDisplayed();
+
+			if(Backtodiscovery==true){
+				test.log(Status.PASS, "Close icon is displayed reverting back to collapsed mode");
+			}
+			else if(Backtodiscovery==false) {
+				test.log(Status.FAIL, "Close icon is not displayed reverting back to collapsed mode");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to verify close icon after clicking on collapse mode");
+		}
+
+
+		//Verify the device list//
+		try {
+			String Valueu = new ZIFAI_AlertsSettingsPage(driver).Devicecount.getText().replace("(", "").replace(")", "").trim();
+			System.out.println("The device count is " + Valueu);
+			Thread.sleep(3000);
+				Actions action = new Actions(driver);
+				Thread.sleep(2000);
+				action.moveToElement(new ZIFAI_AlertsSettingsPage(driver).DiscoveryviewID).perform();
+				WebElement Device_list = driver.findElement(By.cssSelector(".ui-tooltip"));
+				String Devicelistooltip = Device_list.getText();
+				System.out.println("Device list name: " + Devicelistooltip);
+				if (!Devicelistooltip.isEmpty()) {
+					test.log(Status.PASS, "Device name : "+Devicelistooltip+" "+", "+"Device count : "+Valueu);
+					test.addScreenCaptureFromPath(captureScreenShot(driver));
+				} else {
+					test.log(Status.FAIL, "Device name and count is not displayed");
+					test.addScreenCaptureFromPath(captureScreenShot(driver));
+				}
+		}
+		catch (Error e) {
+			test.log(Status.FAIL, e);
+			test.log(Status.FAIL, "Unable to verify Device name"+e);
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+
+		//closing the summary and navigating to device search//
+		try{
+			new ZIFAI_AlertsSettingsPage(driver).Closebutton.click();
+			Thread.sleep(3000);
+			new ZIFAI_AlertsSettingsPage(driver).alertSettingsIcon.click();
+			Thread.sleep(3000);
+			test.log(Status.PASS, "Closed the device details page");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}catch (Exception e){
+			test.log(Status.PASS, "Unable to close the device summary page");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+		//--------------------------------------------End of US-----------------------------------------------//
+		//Report Initialization
+		test = extent.createTest("Test Case 3737: Verify Device List in Expanded discovery summary View");
+		test.createNode("Test Case 3737: Verify Device List in Expanded discovery summary View");
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+		//Clicking on the setting icon and filtering discovery id and clicking on it//
+		try {
+			Thread.sleep(3000);
+			new ZIFAI_AlertsSettingsPage(driver).Discoverysearch.sendKeys("Automode");
+			Thread.sleep(3000);
+			boolean Discoverystatus = new ZIFAI_AlertsSettingsPage(driver).Discoveryzid.isDisplayed();
+			if (Discoverystatus) {
+				new ZIFAI_AlertsSettingsPage(driver).Discoveryzid.click();
+				Thread.sleep(3000);
+				test.log(Status.PASS, "Clicked on setting icon for loading discovery page");
+				test.addScreenCaptureFromPath(captureScreenShot(driver));
+			} else if (!Discoverystatus) {
+				test.log(Status.FAIL, "Unable to load discovery page by clicking on setting icon");
+				test.addScreenCaptureFromPath(captureScreenShot(driver));
+			}
+		} catch (AssertionError | Exception e) {
+			test.log(Status.FAIL, "Unable to load discovery page");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+
+
+		//Clicking on Expand view//
+		try{
+			Thread.sleep(3000);
+			new ZIFAI_AlertsSettingsPage(driver).Expand.click();
+			Thread.sleep(3000);
+			String strvalue= 	new ZIFAI_AlertsSettingsPage(driver).Rightpanel.getAttribute("style");
+			System.out.println("Right panel width: " +strvalue);
+			if(strvalue.contains("100%")){
+				test.log(Status.PASS, "Right panel is expanded and list of discovery is hidden");
+			}
+			else if(!strvalue.contains("100%")) {
+				test.log(Status.FAIL, "Right panel is not expanded and list of discovery is not hidden");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to verify device list LHS after clicking on expand");
+		}
+
+		//Verifying whether collapsed button is displayed//
+		try{
+			Thread.sleep(3000);
+			Boolean strvalue= 	new ZIFAI_AlertsSettingsPage(driver).Collapse.isDisplayed();
+			if(strvalue==true){
+				test.log(Status.PASS, "Discovery details panel is expanded and the button has changed to collapse");
+			}
+			else if(strvalue==false) {
+				test.log(Status.FAIL, "Discovery details panel is expanded and the button has not changed to collapse");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to expand button changing to collapse button during expand mode");
+		}
+
+		//Click on collapse and verify the discovery title//
+		try{
+			Thread.sleep(3000);
+			new ZIFAI_AlertsSettingsPage(driver).Collapse.click();
+			Boolean listofdisc = new ZIFAI_AlertsSettingsPage(driver).listofdiscoverytitle.isDisplayed();
+			if(listofdisc==true){
+				test.log(Status.PASS, "Discovery details panel is collapse and list of discoveries is visible");
+			}
+			else if(listofdisc==false) {
+				test.log(Status.FAIL, "Discovery details panel is not collapsed and list of discoveries is not visible");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to verify device list LHS after clicking on LHS");
+		}
+
+		//Device list LHS should update the devices when  scroll down//
+		try {
+			Thread.sleep(3000);
+			List<WebElement> Device_stat = new ZIFAI_AlertsSettingsPage(driver).listofdiscoveryLHS;
+			List<WebElement> Device_status = new ZIFAI_AlertsSettingsPage(driver).listofdiscoveryLHS;
+			int i;
+			for ( i= 0; i<Device_stat.size(); i=i+1) {
+				String devicedetail = Device_status.get(i).getText();
+				System.out.println("Device list LHS:" + devicedetail);
+				if (!devicedetail.isEmpty()) {
+					System.out.println("Device list LHS verified and scrolled : " +devicedetail);
+				} }
+			test.log(Status.PASS, "Device list LHS verified and scrolled ");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		} catch (Error e) {
+			test.log(Status.FAIL, e);
+			test.log(Status.FAIL, "Unable to verify Device List in LHS");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		} catch (IndexOutOfBoundsException e) {
+			test.log(Status.PASS, "End of Verification for Device List in LHS");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+
+
+		//Device detail list RHS should update the devices when  scroll down//
+		try {
+			Thread.sleep(3000);
+			List<WebElement> casestatus = driver.findElements(By.xpath("//div[contains(@class,'dev-link')]"));
+			List<WebElement> case_status = driver.findElements(By.xpath("//div[contains(@class,'dev-link')]"));
+			int i;
+			for ( i= 0; i<casestatus.size(); i=i+1) {
+				System.out.println(casestatus.size());
+				Actions action = new Actions(driver);
+				Thread.sleep(2000);
+				action.moveToElement(case_status.get(i)).perform();
+				String Casestatustooltip = case_status.get(i).getText();
+				System.out.println("Device detail list: " + Casestatustooltip);
+				if (!Casestatustooltip.isEmpty()) {
+					System.out.println("Device list verified and scrolled in RHS : " +Casestatustooltip);
+
+				} }
+			test.log(Status.PASS, "Device list verified and scrolled in RHS ");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+			Thread.sleep(2000);
+		} catch (Error e) {
+			test.log(Status.FAIL, e);
+			test.log(Status.FAIL, "Unable to verify Device List in RHS");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		} catch (IndexOutOfBoundsException e) {
+			test.log(Status.PASS, "End of Verification for Device List in RHS");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+
+
+
+		//Device list LHS should update the devices when scroll down after clicking on collapse button//
+		try {
+			Thread.sleep(3000);
+			List<WebElement> Device_stat = new ZIFAI_AlertsSettingsPage(driver).listofdiscoveryLHS;
+			List<WebElement> Device_status = new ZIFAI_AlertsSettingsPage(driver).listofdiscoveryLHS;
+			int i;
+			for ( i= 0; i<Device_stat.size(); i=i+1) {
+				String devicedetail = Device_status.get(i).getText();
+				System.out.println("Device list LHS:" + devicedetail);
+				if (!devicedetail.isEmpty()) {
+					System.out.println("Device list LHS verified and scrolled after collapse mode : " +devicedetail);
+				} }
+			test.log(Status.PASS, "Device list LHS verified and scrolled after collapse mode ");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		} catch (Error e) {
+			test.log(Status.FAIL, e);
+			test.log(Status.FAIL, "Unable to verify Device List in LHS after collapse mode");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		} catch (IndexOutOfBoundsException e) {
+			test.log(Status.PASS, "End of Verification for Device List in LHS after collapse mode");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+
+		//Verify close icon is displayed after clicking on collapse icon//
+		try{
+			Thread.sleep(3000);
+			Boolean Backtodiscovery = new ZIFAI_AlertsSettingsPage(driver).Backtodiscoverylist.isDisplayed();
+
+			if(Backtodiscovery==true){
+				test.log(Status.PASS, "Close icon is displayed reverting back to collapsed mode");
+			}
+			else if(Backtodiscovery==false) {
+				test.log(Status.FAIL, "Close icon is not displayed reverting back to collapsed mode");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to verify close icon after clicking on collapse mode");
+		}
+
+
+		//Verify the device list//
+		try {
+			String Valueu = new ZIFAI_AlertsSettingsPage(driver).Devicecount.getText().replace("(", "").replace(")", "").trim();
+			System.out.println("The device count is " + Valueu);
+			Thread.sleep(3000);
+			Actions action = new Actions(driver);
+			Thread.sleep(2000);
+			action.moveToElement(new ZIFAI_AlertsSettingsPage(driver).DiscoveryviewID).perform();
+			WebElement Device_list = driver.findElement(By.cssSelector(".ui-tooltip"));
+			String Devicelistooltip = Device_list.getText();
+			System.out.println("Device list name: " + Devicelistooltip);
+			if (!Devicelistooltip.isEmpty()) {
+				test.log(Status.PASS, "Device name : "+Devicelistooltip+" "+", "+"Device count : "+Valueu);
+				test.addScreenCaptureFromPath(captureScreenShot(driver));
+			} else {
+				test.log(Status.FAIL, "Device name and count is not displayed");
+				test.addScreenCaptureFromPath(captureScreenShot(driver));
+			}
+		}
+		catch (Error e) {
+			test.log(Status.FAIL, e);
+			test.log(Status.FAIL, "Unable to verify Device name"+e);
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+
+		//closing the summary and navigating to device search//
+		try{
+			new ZIFAI_AlertsSettingsPage(driver).Closebutton.click();
+			Thread.sleep(3000);
+			new ZIFAI_AlertsSettingsPage(driver).alertSettingsIcon.click();
+			Thread.sleep(3000);
+			test.log(Status.PASS, "Closed the device details page");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}catch (Exception e){
+			test.log(Status.PASS, "Unable to close the device summary page");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+		//------------------------------------------------End of US------------------------------------------//
+		//Report Initialization
+		test = extent.createTest("Test Case 3731: UI-Verify Discovery details section -Verify Discovery details retains when Expand/Collapse discovery Summary section");
+		test.createNode("Test Case 3731: UI-Verify Discovery details section -Verify Discovery details retains when Expand/Collapse discovery Summary section");
+
+		//Clicking on the setting icon and filtering discovery id and clicking on it//
+		try {
+			new ZIFAI_AlertsSettingsPage(driver).Discoverysearch.sendKeys("Automode");
+			Thread.sleep(3000);
+			boolean Discoverystatus = new ZIFAI_AlertsSettingsPage(driver).Discoveryzid.isDisplayed();
+			if (Discoverystatus) {
+				new ZIFAI_AlertsSettingsPage(driver).Discoveryzid.click();
+				Thread.sleep(3000);
+				test.log(Status.PASS, "Clicked on setting icon for loading discovery page");
+				test.addScreenCaptureFromPath(captureScreenShot(driver));
+			} else if (!Discoverystatus) {
+				test.log(Status.FAIL, "Unable to load discovery page by clicking on setting icon");
+				test.addScreenCaptureFromPath(captureScreenShot(driver));
+			}
+		} catch (AssertionError | Exception e) {
+			test.log(Status.FAIL, "Unable to load discovery page");
+			test.addScreenCaptureFromPath(captureScreenShot(driver));
+		}
+
+
+		//Clicking on Expand view//
+		try{
+			Thread.sleep(3000);
+			new ZIFAI_AlertsSettingsPage(driver).Expand.click();
+			Thread.sleep(3000);
+			String strvalue= 	new ZIFAI_AlertsSettingsPage(driver).Rightpanel.getAttribute("style");
+			System.out.println("Right panel width: " +strvalue);
+			if(strvalue.contains("100%")){
+				test.log(Status.PASS, "Right panel is expanded and list of discovery is hidden");
+			}
+			else if(!strvalue.contains("100%")) {
+				test.log(Status.FAIL, "Right panel is not expanded and list of discovery is not hidden");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to verify device list LHS after clicking on expand");
+		}
+
+		//Verifying whether collapsed button is displayed//
+		try{
+			Thread.sleep(3000);
+			Boolean strvalue= 	new ZIFAI_AlertsSettingsPage(driver).Collapse.isDisplayed();
+			if(strvalue==true){
+				test.log(Status.PASS, "Discovery details panel is expanded and the button has changed to collapse");
+			}
+			else if(strvalue==false) {
+				test.log(Status.FAIL, "Discovery details panel is expanded and the button has not changed to collapse");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to expand button changing to collapse button during expand mode");
+		}
+
+		//Click on collapse and verify the discovery title//
+		try{
+			Thread.sleep(3000);
+			new ZIFAI_AlertsSettingsPage(driver).Collapse.click();
+			Boolean listofdisc = new ZIFAI_AlertsSettingsPage(driver).listofdiscoverytitle.isDisplayed();
+			if(listofdisc==true){
+				test.log(Status.PASS, "Discovery details panel is collapse and list of discoveries is visible");
+			}
+			else if(listofdisc==false) {
+				test.log(Status.FAIL, "Discovery details panel is not collapsed and list of discoveries is not visible");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to verify device list LHS after clicking on LHS");
+		}
+
+		//Clicking on Expand view//
+		try{
+			Thread.sleep(3000);
+			new ZIFAI_AlertsSettingsPage(driver).Expand.click();
+			Thread.sleep(3000);
+			String strvalue= 	new ZIFAI_AlertsSettingsPage(driver).Rightpanel.getAttribute("style");
+			System.out.println("Right panel width: " +strvalue);
+			if(strvalue.contains("100%")){
+				test.log(Status.PASS, "Right panel is expanded and list of discovery is hidden");
+			}
+			else if(!strvalue.contains("100%")) {
+				test.log(Status.FAIL, "Right panel is not expanded and list of discovery is not hidden");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to verify device list LHS after clicking on expand");
+		}
+
+		//Verifying whether collapsed button is displayed//
+		try{
+			Thread.sleep(3000);
+			Boolean strvalue= 	new ZIFAI_AlertsSettingsPage(driver).Collapse.isDisplayed();
+			if(strvalue==true){
+				test.log(Status.PASS, "Discovery details panel is expanded and the button has changed to collapse");
+			}
+			else if(strvalue==false) {
+				test.log(Status.FAIL, "Discovery details panel is expanded and the button has not changed to collapse");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to expand button changing to collapse button during expand mode");
+		}
+
+		//Click on collapse and verify the discovery title//
+		try{
+			Thread.sleep(3000);
+			new ZIFAI_AlertsSettingsPage(driver).Collapse.click();
+			Boolean listofdisc = new ZIFAI_AlertsSettingsPage(driver).listofdiscoverytitle.isDisplayed();
+			if(listofdisc==true){
+				test.log(Status.PASS, "Discovery details panel is collapse and list of discoveries is visible");
+			}
+			else if(listofdisc==false) {
+				test.log(Status.FAIL, "Discovery details panel is not collapsed and list of discoveries is not visible");
+			}
+		}catch (Exception e) {
+			test.log(Status.FAIL, "Unable to verify device list LHS after clicking on LHS");
+		}
+		//---------------------------------------End of US------------------------------------------------------------//
+
+
+	}
+	}

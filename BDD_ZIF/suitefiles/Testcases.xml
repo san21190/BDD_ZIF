@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Automation Test Report" > <!-- data-provider-thread-count="5" -->
+  
+  
+  <!-- Suite file contains TestRunner location and Testng listener location -->
+  
+<!-- Test Started... -->
+
+	
+<!--   <test name="CMP Automation Test Report">
+		<parameter name="DatasheetName" value="CMPPortal" />
+    <classes>
+        <class name="com.zifautomation.TestCases.CMP_Testcases001"/>
+          <class name="com.zifautomation.TestCases.CMP_Testcases002"/>
+            <class name="com.zifautomation.TestCases.CMP_Testcases003"/>
+           	
+    </classes>
+  </test>   -->
+   
+   
+<!--   <test name="ZIF Catalog Automation Test Report">
+  		
+		<parameter name="DatasheetName" value="ZIFCatalog" />
+    <classes>
+        <class name="com.zifautomation.TestCases.ZIFcatalog_Testcases001"/>
+         <class name="com.zifautomation.TestCases.ZIFcatalog_Testcases002"/>
+          <class name="com.zifautomation.TestCases.ZIFcatalog_Testcases003"/>
+    </classes>
+   </test>  -->
+
+
+
+<test name="ZIF UI Automation Test Report" verbose="2">
+
+		<parameter name="DatasheetName" value="ZIFAIPortal" />
+    <classes>
+      <!--   <class name="com.zifautomation.TestCases.ZIFUI_Testcases001"/>
+        <class name="com.zifautomation.TestCases.ZIFUI_Testcases002"/>
+        <class name="com.zifautomation.TestCases.ZIFUI_Testcases003"/>
+        <class name="com.zifautomation.TestCases.ZIFUI_Testcases004"/>
+        <class name="com.zifautomation.TestCases.ZIFUI_Testcases005"/> 
+		 <class name="com.zifautomation.TestCases.ZIFUI_Testcases007"/>-->
+		 <class name="com.zifautomation.TestCases.US2844_ZIFAI_Tech_Bot"/>
+    </classes>
+  </test> 
+   
+  
+</suite> <!-- Suite -->

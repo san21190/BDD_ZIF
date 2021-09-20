@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href='https://cdn.rawgit.com/extent-framework/extent-github-cdn/39026ad/v3html/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>Automation Test Report</title>
+
+	<style type='text/css'>
+		/* json-tree */
+		.jstBracket,.jstComma,.jstValue{white-space:pre-wrap}.jstValue{font-size:10px;font-weight:400;font-family:"Lucida Console",Monaco,monospace}.jstProperty{color:#666;word-wrap:break-word}.jstBool{color:#2525CC}.jstNum{color:#D036D0}.jstNull{color:gray}.jstStr{color:#2DB669}.jstFold:after{content:' -';cursor:pointer}.jstExpand{white-space:normal}.jstExpand:after{content:' +';cursor:pointer}.jstFolded{white-space:normal!important}.jstHiddenBlock{display:none}
+	</style>
+	
+	<script type="text/javascript">
+		/*! json-tree - v0.2.2 - 2017-09-25, MIT LICENSE */
+		var JSONTree=function(){var n={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","/":"&#x2F;"},t=0,r=0;this.create=function(n,t){return r+=1,N(u(n,0,!1),{class:"jstValue"})};var e=function(t){return t.replace(/[&<>'"]/g,function(t){return n[t]})},s=function(){return r+"_"+t++},u=function(n,t,r){if(null===n)return f(r?t:0);switch(typeof n){case"boolean":return l(n,r?t:0);case"number":return i(n,r?t:0);case"string":return o(n,r?t:0);default:return n instanceof Array?a(n,t,r):c(n,t,r)}},c=function(n,t,r){var e=s(),u=Object.keys(n).map(function(r){return j(r,n[r],t+1,!0)}).join(m()),c=[g("{",r?t:0,e),N(u,{id:e}),p("}",t)].join("\n");return N(c,{})},a=function(n,t,r){var e=s(),c=n.map(function(n){return u(n,t+1,!0)}).join(m());return[g("[",r?t:0,e),N(c,{id:e}),p("]",t)].join("\n")},o=function(n,t){var r=e(JSON.stringify(n));return N(v(r,t),{class:"jstStr"})},i=function(n,t){return N(v(n,t),{class:"jstNum"})},l=function(n,t){return N(v(n,t),{class:"jstBool"})},f=function(n){return N(v("null",n),{class:"jstNull"})},j=function(n,t,r){var s=v(e(JSON.stringify(n))+": ",r),c=N(u(t,r,!1),{});return N(s+c,{class:"jstProperty"})},m=function(){return N(",\n",{class:"jstComma"})},N=function(n,t){return d("span",t,n)},d=function(n,t,r){return"<"+n+Object.keys(t).map(function(n){return" "+n+'="'+t[n]+'"'}).join("")+">"+r+"</"+n+">"},g=function(n,t,r){return N(v(n,t),{class:"jstBracket"})+N("",{class:"jstFold",onclick:"JSONTree.toggle('"+r+"')"})};this.toggle=function(n){var t=document.getElementById(n),r=t.parentNode,e=t.previousElementSibling;""===t.className?(t.className="jstHiddenBlock",r.className="jstFolded",e.className="jstExpand"):(t.className="",r.className="",e.className="jstFold")};var p=function(n,t){return N(v(n,t),{})},v=function(n,t){return Array(2*t+1).join(" ")+n};return this}();
+	</script>
+</head>
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo black"><img src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png"></a>
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
+		</ul>
+		<!-- report name -->
+		<span class='report-name'>Automation Test Report</span>
+		<!-- report headline -->
+		<span class='report-headline'></span>
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<a href='#!'>
+			<span class='label blue darken-3 suite-start-time'>Sep 17, 2021 12:22:36 PM</span>
+			</a>
+		</ul>
+	</div>
+</nav>		<!-- container -->
+		<div class='container'>
+<div id='test-view' class='view'>
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+				<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+										<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+			<!-- category toggle -->
+			<!-- category toggle -->
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+				<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+				<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+				<i class='material-icons'>search</i> Search
+				</a>
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+<div id='test-view-charts' class='subview-full'>
+    <div id='charts-row' class='row nm-v nm-h'>
+        <div class='col s12 m6 l6 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Tests</div>
+                <div class='chart-box' style="max-height:94px;">
+                    <canvas id='parent-analysis' width='90' height='70'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>17</span> test(s) passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                </div>
+            </div>
+        </div>
+        <div class='col s12 m6 l6 np-h'>
+            <div class='card-panel nm-v'>
+                <div class='left panel-name'>Steps</div>
+                <div class='chart-box' style="max-height:94px;">
+                    <canvas id='child-analysis' width='90' height='70'></canvas>
+                </div>
+                <div class='block text-small'>
+                    <span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>17</span> step(s) passed</span>
+                </div>
+                <div class='block text-small'>
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="timeline-chart" class="row nm-v nm-h">
+        <div class="col s12 m12 l12 np-h">
+            <div class="card-panel">
+                <div class='left panel-name'>Timeline (seconds)</div>
+                <div class="chart-box" style="width:98%;max-height:145px;">
+                    <canvas id="timeline" height="120"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>	<div class='subview-left left'>
+		<div class='view-summary'>
+			<ul id='test-collection' class='test-collection'>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>User Story 1502: Secured upload of BOT- Hashing & Comparison - UI</span>
+						<span class='test-time'>Sep 17, 2021 12:23:02 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:23:02 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:23:02 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:23:10 PM</td>
+				<td class='step-details'>
+						Valid credential has been entered
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:23:27 PM</td>
+				<td class='step-details'>
+						Clicked on ZIF Bots
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='2'>
+		<div class='collapsible-header'>
+			<div class='node-name'>User Story 1502: Secured upload of BOT- Hashing & Comparison - UI</div>
+			<span class='node-time'>Sep 17, 2021 12:23:02 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+						<ul class='screenshots'>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122327979.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122327979.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122327979.png'></li>
+						</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4532: Verify Admin user can upload package in Bots screen</span>
+						<span class='test-time'>Sep 17, 2021 12:23:28 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:23:28 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:23:28 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:23:45 PM</td>
+				<td class='step-details'>
+						Successfully uploaded file password and packaged file
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='4'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4532: Verify Admin user can upload package in Bots screen</div>
+			<span class='node-time'>Sep 17, 2021 12:23:28 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4536: Verify Admin user can search any package in Bots screen</span>
+						<span class='test-time'>Sep 17, 2021 12:23:52 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:23:52 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:23:52 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:24:01 PM</td>
+				<td class='step-details'>
+						Exact Bot name is filtered as per the filter search
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='6'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4536: Verify Admin user can search any package in Bots screen</div>
+			<span class='node-time'>Sep 17, 2021 12:23:52 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+						<ul class='screenshots'>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122401864.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122401864.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122401864.png'></li>
+						</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='7'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4535: Verify Admin user can delete any package in Bots screen</span>
+						<span class='test-time'>Sep 17, 2021 12:24:01 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:24:01 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:24:01 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:24:27 PM</td>
+				<td class='step-details'>
+						Exact Bot name is filtered and deleted
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:24:40 PM</td>
+				<td class='step-details'>
+						ZIFQA bot name is deleted and successfully verified
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:24:47 PM</td>
+				<td class='step-details'>
+						Clearing the filter after verification
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='8'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4535: Verify Admin user can delete any package in Bots screen</div>
+			<span class='node-time'>Sep 17, 2021 12:24:01 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+						<ul class='screenshots'>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122428168.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122428168.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122428168.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122441099.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122441099.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122441099.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122447766.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122447766.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122447766.png'></li>
+						</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='9'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4534: Verify Admin user can download package in Bots screen</span>
+						<span class='test-time'>Sep 17, 2021 12:24:47 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:24:47 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:24:47 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:25:00 PM</td>
+				<td class='step-details'>
+						Filtering specific Bot name for download
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:25:06 PM</td>
+				<td class='step-details'>
+						Clicked on Download and verified the file has been downloaded
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:25:13 PM</td>
+				<td class='step-details'>
+						Clearing the filter after download and verification
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='10'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4534: Verify Admin user can download package in Bots screen</div>
+			<span class='node-time'>Sep 17, 2021 12:24:47 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+						<ul class='screenshots'>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122500879.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122500879.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122500879.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122507325.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122507325.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122507325.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122513824.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122513824.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122513824.png'></li>
+						</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='11'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4537: Verify Admin user cannot upload other than package in Bots screen</span>
+						<span class='test-time'>Sep 17, 2021 12:25:13 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:25:13 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:25:13 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:25:31 PM</td>
+				<td class='step-details'>
+						Successfully verified only password protected files can be uploaded
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:25:54 PM</td>
+				<td class='step-details'>
+						Successfully verified only package files can be uploaded
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='12'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4537: Verify Admin user cannot upload other than package in Bots screen</div>
+			<span class='node-time'>Sep 17, 2021 12:25:13 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='13'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4672: Verify all GAVS developed Shell Scripts/Python Scripts should be compressed with the secret key or password</span>
+						<span class='test-time'>Sep 17, 2021 12:26:00 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:26:00 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:26:00 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:26:17 PM</td>
+				<td class='step-details'>
+						Successfully uploaded GAVS developed Shell Scripts/Python Scripts compressed file with password
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:26:39 PM</td>
+				<td class='step-details'>
+						Exact Bot name is filtered and deleted after compressed file upload
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:26:52 PM</td>
+				<td class='step-details'>
+						ZIFQA bot name is deleted and successfully verified after compressed file upload
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:01 PM</td>
+				<td class='step-details'>
+						Clearing the filter after verification of compressed file upload
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='14'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4672: Verify all GAVS developed Shell Scripts/Python Scripts should be compressed with the secret key or password</div>
+			<span class='node-time'>Sep 17, 2021 12:26:00 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+						<ul class='screenshots'>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122639898.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122639898.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122639898.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122652794.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122652794.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122652794.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122702300.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122702300.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122702300.png'></li>
+						</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='15'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4550: Verify authenticate users while uploading a file in Bots screen</span>
+						<span class='test-time'>Sep 17, 2021 12:27:02 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:27:02 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:27:02 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:05 PM</td>
+				<td class='step-details'>
+						Authenticated user with admin access as clicked on bots screen  :zifadmin@zif.ai
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='16'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4550: Verify authenticate users while uploading a file in Bots screen</div>
+			<span class='node-time'>Sep 17, 2021 12:27:02 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+						<ul class='screenshots'>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122705632.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122705632.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122705632.png'></li>
+						</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='17'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4531: Verify Bots screen should display set of all bots</span>
+						<span class='test-time'>Sep 17, 2021 12:27:05 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:27:05 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:27:05 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:05 PM</td>
+				<td class='step-details'>
+						Bot name : Windows Service Restart
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:06 PM</td>
+				<td class='step-details'>
+						Bot name : Disk Space Optimization
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:06 PM</td>
+				<td class='step-details'>
+						Bot name : DB Size Monitor Report
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:06 PM</td>
+				<td class='step-details'>
+						Bot name : Datafile Usage Report
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:07 PM</td>
+				<td class='step-details'>
+						Bot name : Virus Total URL Reputation
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:07 PM</td>
+				<td class='step-details'>
+						Bot name : Cherwell Incident Creation
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:07 PM</td>
+				<td class='step-details'>
+						Bot name :
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:08 PM</td>
+				<td class='step-details'>
+						Bot name : Azure VM Start Stop
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:08 PM</td>
+				<td class='step-details'>
+						Bot name : VMWare Add VCPU
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='18'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4531: Verify Bots screen should display set of all bots</div>
+			<span class='node-time'>Sep 17, 2021 12:27:05 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+						<ul class='screenshots'>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122705996.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122705996.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122705996.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122706328.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122706328.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122706328.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122706667.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122706667.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122706667.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122707014.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122707014.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122707014.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122707381.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122707381.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122707381.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122707711.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122707711.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122707711.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122708069.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122708069.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122708069.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122708419.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122708419.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122708419.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122708771.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122708771.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122708771.png'></li>
+						</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='19'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 5076: Verify Package Name should have a maximum file size validation should be present in the BOTS screen</span>
+						<span class='test-time'>Sep 17, 2021 12:27:08 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:27:08 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:27:08 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:25 PM</td>
+				<td class='step-details'>
+						Bot upload maximum size error message is displayed
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='20'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 5076: Verify Package Name should have a maximum file size validation should be present in the BOTS screen</div>
+			<span class='node-time'>Sep 17, 2021 12:27:08 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='21'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 5075: Verify Package Name should have a maximum name length validation should be present in the BOTS screen</span>
+						<span class='test-time'>Sep 17, 2021 12:27:31 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:27:31 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:27:31 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:27:48 PM</td>
+				<td class='step-details'>
+						Bot name does not accept more than 35 characters long
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='22'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 5075: Verify Package Name should have a maximum name length validation should be present in the BOTS screen</div>
+			<span class='node-time'>Sep 17, 2021 12:27:31 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='23'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4551: Verify set a maximum name length and maximum file size while uploading a file in Bots screen</span>
+						<span class='test-time'>Sep 17, 2021 12:27:54 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:27:54 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:27:54 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:28:12 PM</td>
+				<td class='step-details'>
+						Successfully verified maximum file size and maximum characters cannot be done
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='24'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4551: Verify set a maximum name length and maximum file size while uploading a file in Bots screen</div>
+			<span class='node-time'>Sep 17, 2021 12:27:54 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='25'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4585: Verify simple error messages are displaying for file upload errors in Bots screen</span>
+						<span class='test-time'>Sep 17, 2021 12:28:21 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:28:21 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:28:21 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:28:37 PM</td>
+				<td class='step-details'>
+						Successfully verified simple error message
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='26'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4585: Verify simple error messages are displaying for file upload errors in Bots screen</div>
+			<span class='node-time'>Sep 17, 2021 12:28:21 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='27'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4530: Verify the following fields are present in the Bots screen</span>
+						<span class='test-time'>Sep 17, 2021 12:28:46 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:28:46 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:28:46 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:28:47 PM</td>
+				<td class='step-details'>
+						Bot package name column is displayed
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:28:47 PM</td>
+				<td class='step-details'>
+						Bot Uploaded Date and Time column is displayed
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:28:47 PM</td>
+				<td class='step-details'>
+						Bot uploaded by column is displayed
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:28:48 PM</td>
+				<td class='step-details'>
+						Bot Category column is displayed
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:28:48 PM</td>
+				<td class='step-details'>
+						Bot upload package icon is displayed
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:28:48 PM</td>
+				<td class='step-details'>
+						Bot filter icon is displayed
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:28:49 PM</td>
+				<td class='step-details'>
+						Bot download icon is displayed
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:28:49 PM</td>
+				<td class='step-details'>
+						Bot delete icon is displayed
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='28'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4530: Verify the following fields are present in the Bots screen</div>
+			<span class='node-time'>Sep 17, 2021 12:28:46 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+						<ul class='screenshots'>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122847502.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122847502.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122847502.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122847820.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122847820.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122847820.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122848127.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122848127.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122848127.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122848428.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122848428.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122848428.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122848726.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122848726.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122848726.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122849023.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122849023.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122849023.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122849311.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122849311.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122849311.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122849611.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122849611.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122849611.png'></li>
+						</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='29'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4540: Verify uploading a file in Bots screen should be in compressed format (ZIP)</span>
+						<span class='test-time'>Sep 17, 2021 12:28:49 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:28:49 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:28:49 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:29:06 PM</td>
+				<td class='step-details'>
+						Successfully uploaded compressed format (ZIP)
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:29:28 PM</td>
+				<td class='step-details'>
+						Exact Bot name is filtered and deleted after compress upload
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:29:41 PM</td>
+				<td class='step-details'>
+						ZIFQA bot name is deleted and successfully verified
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:29:47 PM</td>
+				<td class='step-details'>
+						Clearing the filter after verification
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='30'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4540: Verify uploading a file in Bots screen should be in compressed format (ZIP)</div>
+			<span class='node-time'>Sep 17, 2021 12:28:49 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+						<ul class='screenshots'>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122928660.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122928660.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122928660.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122941451.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122941451.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122941451.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122947909.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122947909.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021122947909.png'></li>
+						</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='31'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 4541: Verify uploading a file in Bots screen should not in executable format (.exe)</span>
+						<span class='test-time'>Sep 17, 2021 12:29:47 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:29:47 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:29:47 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:30:04 PM</td>
+				<td class='step-details'>
+						Successfully verified exe file cannot be uploaded
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='32'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 4541: Verify uploading a file in Bots screen should not in executable format (.exe)</div>
+			<span class='node-time'>Sep 17, 2021 12:29:47 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+					</div>
+				</li>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='33'>
+					<div class='test-heading'>
+						<span class='test-name'>Test Case 5077: Verify user have edit option present for every package in the BOTS screen</span>
+						<span class='test-time'>Sep 17, 2021 12:30:10 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 17, 2021 12:30:10 PM</span>
+	<span class='label end-time'>Sep 17, 2021 12:30:10 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:30:14 PM</td>
+				<td class='step-details'>
+						Edit icon is verified in the list of Bot package
+					
+				</td>
+			</tr>
+			<tr class='log' status='pass'>
+				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+				<td class='timestamp'>12:30:14 PM</td>
+				<td class='step-details'>
+						<span class='badge white-text green'>ZIFUI_AnP_US1502_Regression Test Case PASSED</span>
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+	<li class='node level-1 leaf pass' status='pass' test-id='34'>
+		<div class='collapsible-header'>
+			<div class='node-name'>Test Case 5077: Verify user have edit option present for every package in the BOTS screen</div>
+			<span class='node-time'>Sep 17, 2021 12:30:10 PM</span>
+			&middot; <span class='node-duration'>0h 0m 0s+0ms</span>
+			<span class='test-status right pass'>pass</span>
+		</div>
+	</li>
+</ul>
+						<ul class='screenshots'>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021123014353.png' src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021123014353.png' data-src='D:\BDD_ZIF\BDD_ZIF/Reports/Screenshots/TestResults09172021123014353.png'></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<div id='step-filters' class="right sr-filters">
+				<a class="btn-floating waves-effect waves-light green" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></a>
+				<a class="btn-floating waves-effect waves-light red" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></a>
+				<a class="btn-floating waves-effect waves-light red darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></a>
+				<a class="btn-floating waves-effect waves-light pink text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></a>
+				<a class="btn-floating waves-effect waves-light orange" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></a>
+				<a class="btn-floating waves-effect waves-light teal" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></a>
+				<a class="btn-floating waves-effect waves-light grey" status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></a>
+			</div>
+			<h5 class='test-name'></h5>
+		</div>
+	</div>
+	<!-- subview right -->
+</div>
+<!-- test view --><!-- category view --><!-- exception view --><div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>17</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>17</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Sep 17, 2021 12:22:36 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Sep 17, 2021 12:30:14 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 7m 37s+453ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>Application</td>
+								<td>ZIF</td>
+							</tr>
+							<tr>
+								<td>Operating System</td>
+								<td>Windows 10</td>
+							</tr>
+							<tr>
+								<td>User Name</td>
+								<td>santhosh.m</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->		</div>
+		<!-- container -->
+		<script>
+			var statusGroup = {
+                parentCount: 17,
+				passParent: 17,
+				failParent: 0,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 0,
+				childCount: 17,
+				passChild: 17,
+				failChild: 0,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 0,
+				debugChild: 0,
+				exceptionsChild: 0,
+				grandChildCount: 0,
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				debugGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		<script>
+			var timeline = {
+			        "User Story 1502: Secured upload of BOT- Hashing & Comparison - UI":0,"Test Case 4532: Verify Admin user can upload package in Bots screen":0,"Test Case 4536: Verify Admin user can search any package in Bots screen":0,"Test Case 4535: Verify Admin user can delete any package in Bots screen":0,"Test Case 4534: Verify Admin user can download package in Bots screen":0,"Test Case 4537: Verify Admin user cannot upload other than package in Bots screen":0,"Test Case 4672: Verify all GAVS developed Shell Scripts/Python Scripts should be compressed with the secret key or password":0,"Test Case 4550: Verify authenticate users while uploading a file in Bots screen":0,"Test Case 4531: Verify Bots screen should display set of all bots":0,"Test Case 5076: Verify Package Name should have a maximum file size validation should be present in the BOTS screen":0,"Test Case 5075: Verify Package Name should have a maximum name length validation should be present in the BOTS screen":0,"Test Case 4551: Verify set a maximum name length and maximum file size while uploading a file in Bots screen":0,"Test Case 4585: Verify simple error messages are displaying for file upload errors in Bots screen":0,"Test Case 4530: Verify the following fields are present in the Bots screen":0,"Test Case 4540: Verify uploading a file in Bots screen should be in compressed format (ZIP)":0,"Test Case 4541: Verify uploading a file in Bots screen should not in executable format (.exe)":0,"Test Case 5077: Verify user have edit option present for every package in the BOTS screen":0
+			};
+		</script>
+		<script src='https://cdn.rawgit.com/extent-framework/extent-github-cdn/c23457b/v3html/js/extent.js' type='text/javascript'></script>
+		<script type='text/javascript'>
+		</script>
+	</body>
+</html>

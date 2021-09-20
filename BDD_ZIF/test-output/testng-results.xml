@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Automation Test Report" duration-ms="31985" started-at="2020-10-08T21:08:42 IST" finished-at="2020-10-08T21:09:14 IST">
+    <groups>
+    </groups>
+    <test name="ZIF UI AnP Automation Test Report" duration-ms="31985" started-at="2020-10-08T21:08:42 IST" finished-at="2020-10-08T21:09:14 IST">
+      <class name="com.zifautomation.TestCases.US2844_ZIFAI_Tech_Bot">
+        <test-method status="PASS" signature="extentReportSetup()[pri:0, instance:com.zifautomation.TestCases.US2844_ZIFAI_Tech_Bot@1445d7f]" name="extentReportSetup" is-config="true" duration-ms="150" started-at="2020-10-08T21:08:42 IST" finished-at="2020-10-08T21:08:42 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- extentReportSetup -->
+        <test-method status="PASS" signature="initializeTestBaseSetup(java.lang.String)[pri:0, instance:com.zifautomation.TestCases.US2844_ZIFAI_Tech_Bot@1445d7f]" name="initializeTestBaseSetup" is-config="true" duration-ms="21385" started-at="2020-10-08T21:08:42 IST" finished-at="2020-10-08T21:09:03 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ZIFAIPortal]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTestBaseSetup -->
+        <test-method status="PASS" signature="US2844_ZIFAI_Tech_Bot()[pri:0, instance:com.zifautomation.TestCases.US2844_ZIFAI_Tech_Bot@1445d7f]" name="US2844_ZIFAI_Tech_Bot" duration-ms="8924" started-at="2020-10-08T21:09:03 IST" finished-at="2020-10-08T21:09:12 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- US2844_ZIFAI_Tech_Bot -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.zifautomation.TestCases.US2844_ZIFAI_Tech_Bot@1445d7f]" name="getResult" is-config="true" duration-ms="1228" started-at="2020-10-08T21:09:12 IST" finished-at="2020-10-08T21:09:13 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=US2844_ZIFAI_Tech_Bot status=SUCCESS method=US2844_ZIFAI_Tech_Bot.US2844_ZIFAI_Tech_Bot()[pri:0, instance:com.zifautomation.TestCases.US2844_ZIFAI_Tech_Bot@1445d7f] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="endReport()[pri:0, instance:com.zifautomation.TestCases.US2844_ZIFAI_Tech_Bot@1445d7f]" name="endReport" is-config="true" duration-ms="265" started-at="2020-10-08T21:09:13 IST" finished-at="2020-10-08T21:09:14 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endReport -->
+      </class> <!-- com.zifautomation.TestCases.US2844_ZIFAI_Tech_Bot -->
+    </test> <!-- ZIF UI AnP Automation Test Report -->
+  </suite> <!-- Automation Test Report -->
+</testng-results>

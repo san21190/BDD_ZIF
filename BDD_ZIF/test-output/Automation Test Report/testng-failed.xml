@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Automation Test Report]">
+  <test thread-count="5" name="ZIF UI AnP Automation Test Report(failed)">
+    <parameter name="DatasheetName" value="ZIFAIPortal"/>
+    <classes>
+      <class name="com.zifautomation.TestScripts.ZIFUI_AnP_Regression">
+        <methods>
+          <include name="extentReportSetup"/>
+          <include name="endReport"/>
+          <include name="initializeTestBaseSetup"/>
+          <include name="ZIFUI_AnP_RegressionTestcase"/>
+          <include name="getResult"/>
+        </methods>
+      </class> <!-- com.zifautomation.TestScripts.ZIFUI_AnP_Regression -->
+    </classes>
+  </test> <!-- ZIF UI AnP Automation Test Report(failed) -->
+</suite> <!-- Failed suite [Automation Test Report] -->

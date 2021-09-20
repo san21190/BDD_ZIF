@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Automation Test Report" > <!-- data-provider-thread-count="5" -->
+  
+  
+  <!-- Suite file contains TestRunner location and Testng listener location -->
+  
+<!-- Test Started... -->
+  <test name="Automation Test Report">
+    <classes>
+       <class name="com.zifautomation.TestRunner.TestRunner"/> 
+     
+    </classes>
+  </test> 
+   
+   <!-- Listeners implemented in below location -->
+  <listeners>
+  		<listener class-name="com.zifautomation.Listeners.ITestListenerImpl"></listener>
+  </listeners>
+  
+</suite> <!-- Suite -->
