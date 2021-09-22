@@ -34,7 +34,7 @@
 <test name="ZIF UI AnP Automation Test Report">
 		<parameter name="DatasheetName" value="ZIFAIPortal"/>
     <classes>
-		 <class name="com.zifautomation.TestCases.ZIF_Monitoring_UI_US7422_Regression"/>
+		 <class name="com.zifautomation.TestCases.ZIFUI_AnP_US2073_Regression"/>
 	</classes>
   </test>
 
